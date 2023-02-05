@@ -41,7 +41,7 @@ function MapContainer(props) {
   };
 
   return (
-    <div style={{ height: "100vh", width: "100%" }}>
+    <div style={{ height: "100vh", width: "100%", display: "flex" }}>
       <div
         style={{
           marginLeft: "10px",
