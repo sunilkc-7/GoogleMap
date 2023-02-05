@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Map, GoogleApiWrapper, InfoWindow, Marker } from "google-maps-react";
 const key = process.env.REACT_APP_GOOGLE_KEY;
 
@@ -41,15 +41,10 @@ function MapContainer(props) {
   };
 
   return (
-    <div
-      style={{
-        position: "relative",
-        width: "100%",
-        height: "100vh",
-      }}
-    >
+    <div style={{ height: "100vh", width: "100%" }}>
       <div
         style={{
+          marginLeft: "10px",
           position: "absolute",
           top: "30%",
           left: "0",
@@ -67,22 +62,30 @@ function MapContainer(props) {
         <span>longitude:{data?.geometry?.location.lng}</span>
       </div>
 
-      <input
+      <span
         style={{
-          marginTop: "10px",
-          marginBottom: "5px",
+          // marginTop: "5px",
+          // marginBottom: "5px",
+          top: "80px",
+          position: "relative",
+          marginLeft: "10px",
+          font: "10px",
+          zIndex: "1",
         }}
-        type="text"
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-        placeholder="Enter location"
-      />
-      <button onClick={handleSearch}>Search</button>
+      >
+        <input
+          type="text"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          placeholder="Enter location"
+        />
+        <button onClick={handleSearch}>Search</button>
+      </span>
 
       <Map
         google={props.google}
         onClick={onMapClicked}
-        style={{ width: "100%", height: "100%" }}
+        style={{ width: "100%", height: "100vh", position: "static" }}
         zoom={5}
         center={{
           lat: selectedPlace.position ? selectedPlace.position.lat : 27.717245,
